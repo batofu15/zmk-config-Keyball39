@@ -5,6 +5,7 @@
     chosen {
         zephyr,display = &oled;
 	zmk,physical-layout = &keyball_physical_layout;
+	zmk,underglow = &rgb_strip;
     };
 
 	keyball_physical_layout: keyball_physical_layout {
