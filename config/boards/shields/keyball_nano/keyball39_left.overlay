@@ -1,6 +1,7 @@
-/ {
-    #include "keyball39.dtsi"
+#include "keyball39.dtsi"
+#include <dt-bindings/zmk/rgb.h>
 
+/ {
     chosen {
         zmk,rgb-strip = &rgb_strip0;
     };
