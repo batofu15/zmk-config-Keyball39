@@ -5,8 +5,12 @@
  */
 
 #include "keyball39.dtsi"
+#include <dt-bindings/zmk/rgb.h>
 
 / {
+    chosen {
+        zmk,rgb-strip = &rgb_strip0;
+    };
     trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
@@ -33,7 +37,7 @@
         group1 {
             psels = <NRF_PSEL(SPIM_SCK, 1, 13)>,
                     <NRF_PSEL(SPIM_MOSI, 0, 10)>,
-                    <NRF_PSEL(SPIM_MISO, 0, 10)>;
+                    <NRF_PSEL(SPIM_MISO, 0, 11)>;
         };
     };
 
@@ -41,7 +45,7 @@
         group1 {
             psels = <NRF_PSEL(SPIM_SCK, 1, 13)>,
                     <NRF_PSEL(SPIM_MOSI, 0, 10)>,
-                    <NRF_PSEL(SPIM_MISO, 0, 10)>;
+                    <NRF_PSEL(SPIM_MISO, 0, 11)>;
             low-power-enable;
         };
     };
@@ -64,5 +68,20 @@
         automouse-layer = <4>;
         scroll-layers = <5>;
         snipe-layers = <6>;
+    };
+};
+
+&pro_micro {
+    rgb_strip0: ws2812_strip {
+        compatible = "worldsemi,ws2812-gpio";
+        label = "KB39_UNDERGLOW_LEDS";
+        /*
+         * Using pin D1 (P0.06), which is the TRRS DATA pin.
+         * This is only possible because the split communication is wireless (BLE).
+         */
+        gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;
+        chain-length = <22>;
+        num-pixels = <22>;
+        color-mapping = <RGB_COLOR_MAPPING_GRB>;
     };
 };
