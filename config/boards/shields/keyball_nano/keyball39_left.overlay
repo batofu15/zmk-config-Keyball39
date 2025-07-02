@@ -11,7 +11,7 @@
         label = "KB39_LEFT_UNDERGLOW_LEDS";
         gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;
         chain-length = <22>;
-        color-mapping = <RGB_COLOR_MAPPING_GRB>;
+        color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
     };
 
     &i2c0 {
