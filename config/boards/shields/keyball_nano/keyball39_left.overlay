@@ -11,6 +11,9 @@
         chosen {
             zmk,rgb-strip = &rgb_strip0;
         };
+        &i2c0 {
+            status = "disabled";
+        };
     };
 
     &kscan0 {
