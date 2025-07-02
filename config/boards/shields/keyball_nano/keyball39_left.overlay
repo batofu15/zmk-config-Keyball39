@@ -28,7 +28,7 @@
 
         // Pin assignment:
         // Use <&pro_micro 3> to refer to the D3 pin of the Pro Micro module.
-        gpios = <&pro_micro 3 GPIO_ACTIVE_HIGH>; // Use 'gpios' property, not 'gpio-pin'
+        gpios = <&pro_micro 3>;
 
         num-pixels = <22>; // Total number of SK6812 LEDs
         chain-length = <22>; // Same as num-pixels for a single strip
