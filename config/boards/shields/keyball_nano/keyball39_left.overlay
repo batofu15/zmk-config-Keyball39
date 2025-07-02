@@ -3,7 +3,8 @@
 
 / {
     chosen {
-        zmk,underglow = &led_strip;
+        //zmk,underglow = &led_strip;
+        zephyr,led-strip = &led_strip;
     };
 };
 
