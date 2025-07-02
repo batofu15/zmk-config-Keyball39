@@ -1,5 +1,6 @@
 #include <dt-bindings/zmk/matrix_transform.h>
 #include <physical_layouts.dtsi>
+#include <dt-bindings/zmk/rgb.h>
 
 / {
 chosen {
@@ -79,4 +80,8 @@ kscan0: kscan {
         , <&pro_micro 18 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
         ;
 };
+};
+
+&led_strip {
+    chain-length = <22>;
 };
