@@ -54,7 +54,7 @@
             , <&key_physical_attrs 100 100  775  525 (-1000) (-50) (-100)>
             , <&key_physical_attrs 100 100 1250  338       0     0     0>
             ;
-    };
+
 
     default_transform: keymap_transform_0 {
 		compatible = "zmk,matrix-transform";
@@ -122,4 +122,5 @@
         inversion-on;
         prechargep = <0x22>;
     };
+};
 };
