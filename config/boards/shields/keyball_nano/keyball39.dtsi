@@ -8,7 +8,7 @@ chosen {
     zmk,underglow = &led_strip;
 };
 
-&led_strip {
+led_strip {
     chain-length = <22>;
 };
 
