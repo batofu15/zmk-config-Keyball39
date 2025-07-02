@@ -8,9 +8,6 @@
 #include <dt-bindings/zmk/rgb.h>
 
 / {
-    // This /chosen node *adds* the zmk,rgb-strip property
-    // to the existing /chosen node merged from keyball39.dtsi.
-    // It does NOT overwrite the display or physical-layout properties.
     chosen {
         zmk,rgb-strip = &rgb_strip0;
     };
@@ -28,21 +25,13 @@
 		;
 };
 
-&pro_micro { // This is the correct parent node as confirmed by your .dtsi
-    // ... existing configurations for your right half, e.g.,
-    // kscan, row-gpios, col-gpios, etc. might be here or in included .dtsi
-
-    rgb_strip0: ws2812_strip { // Node name changed to reflect common ZMK practice
-        compatible = "worldsemi,ws2812-gpio"; // Preferred compatible for WS2812/SK6812 via GPIO
+&pro_micro {
+    rgb_strip0: ws2812_strip {
+        compatible = "worldsemi,ws2812-gpio";
         label = "KB39_RIGHT_UNDERGLOW_LEDS";
-
-        // Pin assignment:
-        // Use <&pro_micro 3> to refer to the D3 pin of the Pro Micro module.
-        gpios = <&gpio0 20 GPIO_ACTIVE_HIGH>;
-
-        num-pixels = <22>; // Total number of SK6812 LEDs
-        chain-length = <22>; // Same as num-pixels for a single strip
-        color-mapping = <RGB_COLOR_MAPPING_GRB>; // Use the specific macro from <dt-bindings/zmk/rgb.h>
-                                                // This is standard for SK6812. If colors are off, try others like RGB_COLOR_MAPPING_RGB.
+        gpios = <&gpio0 20 GPIO_ACTIVE_HIGH>; // Re-type this line carefully
+        num-pixels = <22>;
+        chain-length = <22>;
+        color-mapping = <RGB_COLOR_MAPPING_GRB>;
     };
 };
