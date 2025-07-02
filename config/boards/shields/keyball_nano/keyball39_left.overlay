@@ -11,6 +11,17 @@
         chosen {
             zmk,rgb-strip = &rgb_strip0;
         };
+
+        // Define the RGB strip as a top-level node
+        rgb_strip0: ws2812_strip {
+            compatible = "worldsemi,ws2812-gpio";
+            label = "KB39_LEFT_UNDERGLOW_LEDS";
+            gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>; // Pin D1 (P0.06)
+            chain-length = <22>;
+            num-pixels = <22>;
+            color-mapping = <RGB_COLOR_MAPPING_GRB>;
+        };
+
         &i2c0 {
             status = "disabled";
         };
@@ -26,18 +37,3 @@
             , <&pro_micro 9 GPIO_ACTIVE_HIGH>
             ;
     };
-
-&pro_micro {
-    rgb_strip0: ws2812_strip {
-        compatible = "worldsemi,ws2812-gpio";
-        label = "KB39_UNDERGLOW_LEDS";
-        /*
-         * Using pin D1 (P0.06), which is the TRRS DATA pin.
-         * This is only possible because the split communication is wireless (BLE).
-         */
-        gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;
-        chain-length = <22>;
-        num-pixels = <22>;
-        color-mapping = <RGB_COLOR_MAPPING_GRB>;
-    };
-};
