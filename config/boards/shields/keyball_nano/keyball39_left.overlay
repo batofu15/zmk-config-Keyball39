@@ -7,6 +7,16 @@
 #include "keyball39.dtsi"
 #include <dt-bindings/zmk/rgb.h>
 
+/ {
+    // This /chosen node *adds* the zmk,rgb-strip property
+    // to the existing /chosen node merged from keyball39.dtsi.
+    // It does NOT overwrite the display or physical-layout properties.
+    chosen {
+        zmk,rgb-strip = &rgb_strip0;
+    };
+};
+
+
 &kscan0 {
 	col-gpios
 		= <&pro_micro 4 GPIO_ACTIVE_HIGH>
