@@ -1,6 +1,12 @@
 #include "keyball39.dtsi"
 #include <dt-bindings/zmk/rgb.h>
 
+/ {
+    chosen {
+        zmk,underglow = &led_strip;
+    };
+};
+
 &kscan0 {
     col-gpios
         = <&pro_micro 4 GPIO_ACTIVE_HIGH>
