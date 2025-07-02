@@ -1,6 +1,7 @@
 #include <dt-bindings/zmk/matrix_transform.h>
 #include <physical_layouts.dtsi>
 
+/ {
 chosen {
     zmk,physical-layout = &keyball_physical_layout;
 };
@@ -75,4 +76,5 @@ kscan0: kscan {
         , <&pro_micro 19 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
         , <&pro_micro 18 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
         ;
+};
 };
