@@ -14,6 +14,12 @@
     chosen {
         zmk,rgb-strip = &rgb_strip0;
     };
+
+
+    trackball_listener {
+	compatible = "zmk,input-listener";
+	device = <&trackball>;
+  };
 };
 
 &default_transform {
@@ -70,13 +76,6 @@
     };
 };
 
-/ {
-  trackball_listener {
-    compatible = "zmk,input-listener";
-    device = <&trackball>;
-
-  };
-};
 
 &pro_micro { // This is the correct parent node as confirmed by your .dtsi
     // ... existing configurations for your right half, e.g.,
