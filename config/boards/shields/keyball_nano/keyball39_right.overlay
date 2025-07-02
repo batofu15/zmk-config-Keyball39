@@ -1,7 +1,7 @@
-#include "keyball39.dtsi"
-#include <dt-bindings/zmk/rgb.h>
-
 / {
+    #include "keyball39.dtsi"
+    #include <dt-bindings/zmk/rgb.h>
+
     chosen {
         zmk,rgb-strip = &rgb_strip0;
     };
@@ -11,7 +11,7 @@
         label = "KB39_RIGHT_UNDERGLOW_LEDS";
         gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;
         chain-length = <22>;
-        color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
+        color-mapping = <LED_COLOR_ID_GREEN>;
     };
 
     trackball_listener {
@@ -19,7 +19,6 @@
         device = <&trackball>;
     };
 
-    // THIS IS THE FIX: All modifications are now inside the root node
     &i2c0 {
         status = "disabled";
     };
