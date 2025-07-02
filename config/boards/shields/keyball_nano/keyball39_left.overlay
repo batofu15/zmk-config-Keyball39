@@ -22,18 +22,17 @@
     // ... existing configurations for your right half, e.g.,
     // kscan, row-gpios, col-gpios, etc. might be here or in included .dtsi
 
-    led_strip: led_strip {
-        compatible = "ws2812-gpio"; // Use the GPIO driver for SK6812
-        label = "KB39_RIGHT_UNDERGLOW_LEDS"; // A descriptive label
+    rgb_strip0: ws2812_strip { // Node name changed to reflect common ZMK practice
+        compatible = "worldsemi,ws2812-gpio"; // Preferred compatible for WS2812/SK6812 via GPIO
+        label = "KB39_RIGHT_UNDERGLOW_LEDS";
 
         // Pin assignment:
         // Use <&pro_micro 3> to refer to the D3 pin of the Pro Micro module.
-        gpio-pin = <&pro_micro 3>;
+        gpios = <&pro_micro 3 GPIO_ACTIVE_HIGH>; // Use 'gpios' property, not 'gpio-pin'
 
-        num-pixels = <22>; // Total number of SK6812 LEDs in your chain (LED1-LED22 from schematic)
-        chain-length = <22>; // For a single strip, this is usually the same as num-pixels
-        color-mapping = <0>; // SK6812 are commonly GRB (Green, Red, Blue) order.
-                                     // If colors appear incorrect (e.g., green where you expect red),
-                                     // try changing this to <WS2812_RGB> or <WS2812_BGR>.
+        num-pixels = <22>; // Total number of SK6812 LEDs
+        chain-length = <22>; // Same as num-pixels for a single strip
+        color-mapping = <RGB_COLOR_MAPPING_GRB>; // Use the specific macro from <dt-bindings/zmk/rgb.h>
+                                                // This is standard for SK6812. If colors are off, try others like RGB_COLOR_MAPPING_RGB.
     };
 };
