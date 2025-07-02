@@ -17,60 +17,22 @@
 		;
 };
 
-    // Define the SPI2 instance and its pin configurations.
-    // The SK6812 LEDs are controlled via a software SPI driver or a hardware SPI peripheral.
-    // Using hardware SPI (like SPI2 here) is generally more reliable and efficient.
-    &spi2 {
-        status = "okay"; // Enable SPI2
+&pro_micro { // This is the correct parent node as confirmed by your .dtsi
+    // ... existing configurations for your right half, e.g.,
+    // kscan, row-gpios, col-gpios, etc. might be here or in included .dtsi
 
-        // Pin control definitions for SPI2.
-        // These pins are typically defined in the base board's DTS file (e.g., nice_nano_v2.dts).
-        // This section ensures the correct pins are configured for SPI2.
-        pinctrl-0 = <&spi2_default>; // Default pin configuration
-        pinctrl-1 = <&spi2_sleep>;   // Low-power/sleep pin configuration
+    led_strip: led_strip {
+        compatible = "ws2812-gpio"; // Use the GPIO driver for SK6812
+        label = "KB39_RIGHT_UNDERGLOW_LEDS"; // A descriptive label
 
-        // Define the RGB LED strip itself.
-        rgb_strip: ws2812@0 {
-            compatible = "worldsemi,ws2812-spi"; // ZMK uses this driver for SK6812 as well
-            label = "RGB_STRIP";
-            reg = <0>; // Chip Select (CS) line index (not directly used by WS2812, but required for compatible)
-            spi-max-frequency = <4000000>; // Max SPI frequency for WS2812/SK6812 (4 MHz)
+        // Pin assignment:
+        // Use <&pro_micro 3> to refer to the D3 pin of the Pro Micro module.
+        gpio-pin = <&pro_micro 3>;
 
-            // *** CRITICAL: Number of LEDs per half ***
-            // The Keyball39 uses 46 SK6812MINI-E LEDs in total,
-            // which means 23 LEDs per half.
-            chain-length = <24>;
-
-            // *** CRITICAL: Color mapping ***
-            // SK6812 LEDs often use GRB (Green, Red, Blue) color order.
-            // If your LEDs show incorrect colors (e.g., red when you expect green),
-            // you might need to try other mappings like LED_COLOR_ID_RGB.
-            color-mapping = <LED_COLOR_ID_GRB>;
-        };
+        num-pixels = <22>; // Total number of SK6812 LEDs in your chain (LED1-LED22 from schematic)
+        chain-length = <22>; // For a single strip, this is usually the same as num-pixels
+        color-mapping = <WS2812_GRB>; // SK6812 are commonly GRB (Green, Red, Blue) order.
+                                     // If colors appear incorrect (e.g., green where you expect red),
+                                     // try changing this to <WS2812_RGB> or <WS2812_BGR>.
     };
-
-    // This block defines the specific GPIO pins for SPI2.
-    // It's part of the `pinctrl` node, which manages pin multiplexing.
-    // This is where the actual physical pins on the nRF52840 are assigned to SPI2 functions.
-    &pinctrl {
-        spi2_default: spi2_default_pins {
-            group1 {
-                // NRF_PSEL(SPIM_SCK, 0, 13) -> SPI Clock (SCK) on P0.13
-                // NRF_PSEL(SPIM_MOSI, 0, 15) -> SPI Master Out Slave In (MOSI) on P0.15
-                // For WS2812/SK6812, the MOSI pin is the data line.
-                // NRF_PSEL_DIS is for unused pins (e.g., MISO for WS2812 as it's one-way)
-                psels = <NRF_PSEL(SPIM_SCK, 0, 13)>,
-                        <NRF_PSEL(SPIM_MOSI, 0, 15)>,
-                        <NRF_PSEL_DIS(SPIM_MISO, 0, 14)>; // MISO (P0.14) is disabled as it's not used by WS2812
-            };
-        };
-
-        spi2_sleep: spi2_sleep_pins {
-            group1 {
-                psels = <NRF_PSEL(SPIM_SCK, 0, 13)>,
-                        <NRF_PSEL(SPIM_MOSI, 0, 15)>,
-                        <NRF_PSEL_DIS(SPIM_MISO, 0, 14)>;
-                low-power-enable; // Configure pins for low power during sleep
-            };
-        };
-    };
+};
