@@ -1,7 +1,6 @@
-#include "keyball39.dtsi"
-#include <dt-bindings/zmk/rgb.h>
-
 / {
+    #include "keyball39.dtsi"
+
     chosen {
         zmk,rgb-strip = &rgb_strip0;
     };
@@ -11,7 +10,7 @@
         label = "KB39_LEFT_UNDERGLOW_LEDS";
         gpios = <&gpio0 6 GPIO_ACTIVE_HIGH>;
         chain-length = <22>;
-        color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
+        color-mapping = <LED_COLOR_ID_GREEN>;
     };
 
     &i2c0 {
