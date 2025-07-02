@@ -27,8 +27,8 @@
 &pro_micro {
     rgb_strip0: ws2812_strip {
         compatible = "worldsemi,ws2812-gpio";
-        label = "KB39_LEFT_UNDERGLOW_LEDS"; // Changed label to reflect left side
-        gpios = <&gpio0 20 GPIO_ACTIVE_HIGH>; // D3 is P0.20 on nice_nano_v2
+        label = "KB39_LEFT_UNDERGLOW_LEDS";
+        gpios = <&gpio0 20 GPIO_ACTIVE_HIGH>;
         num-pixels = <22>;
         chain-length = <22>;
         color-mapping = <RGB_COLOR_MAPPING_GRB>;
