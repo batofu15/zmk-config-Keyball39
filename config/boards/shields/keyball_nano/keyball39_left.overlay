@@ -31,7 +31,7 @@
 
         num-pixels = <22>; // Total number of SK6812 LEDs in your chain (LED1-LED22 from schematic)
         chain-length = <22>; // For a single strip, this is usually the same as num-pixels
-        color-mapping = <WS2812_GRB>; // SK6812 are commonly GRB (Green, Red, Blue) order.
+        color-mapping = <WS2812_RGB>; // SK6812 are commonly GRB (Green, Red, Blue) order.
                                      // If colors appear incorrect (e.g., green where you expect red),
                                      // try changing this to <WS2812_RGB> or <WS2812_BGR>.
     };
