@@ -5,6 +5,7 @@
  */
 
 #include "keyball39.dtsi"
+#include <dt-bindings/zmk/rgb.h>
 
 &kscan0 {
 	col-gpios
