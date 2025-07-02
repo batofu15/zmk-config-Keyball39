@@ -23,6 +23,7 @@
     &i2c0 {
         status = "disabled";
     };
+    // THIS IS THE FIX: trackball_listener is now correctly placed inside the root node.
     trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
