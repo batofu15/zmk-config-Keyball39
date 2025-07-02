@@ -5,7 +5,7 @@
     chosen {
         zephyr,display = &oled;
 	zmk,physical-layout = &keyball_physical_layout;
-	zmk,underglow = &rgb_strip;
+	zmk,rgb-strip = &rgb_strip0; // Link to the label of your RGB strip node
     };
 
 	keyball_physical_layout: keyball_physical_layout {
