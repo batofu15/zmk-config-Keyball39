@@ -260,7 +260,7 @@ layers:
   - RGB HUI
   - RGB EFF
   - RGB SAI
-  - {t: '$$mdi:transfer$$', type: trans}
+  - RGB SAD
   - BT CLR ALL
   - {h: '4', s: '$$mdi:bluetooth-connect$$'}
   - {h: '5', s: '$$mdi:bluetooth-connect$$'}
@@ -268,9 +268,9 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - RGB BRI
   - RGB BRD
-  - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
+  - RGB HUD
+  - RGB SPI
+  - RGB SPD
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
