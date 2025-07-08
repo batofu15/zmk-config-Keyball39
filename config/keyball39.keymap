@@ -11,6 +11,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/rgb.h>
 
 &lt {
     tapping-term-ms = <240>;
@@ -75,8 +76,8 @@
             label = "NUM";
             bindings = <
 &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp NUMBER_5                  &kp NUMBER_6  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp NUMBER_0
-&kp LEFT      &kp DOWN      &kp UP_ARROW  &kp RIGHT     &none                         &none         &none         &none         &none         &none
-&none         &none         &none         &none         &none                         &none         &none         &trans        &trans        &none
+&kp LEFT      &kp DOWN      &kp UP_ARROW  &kp RIGHT     &none                         &rgb_ug_tog &rgb_ug_hue_inc &rgb_ug_eff_inc &rgb_ug_sat_inc &none
+&none         &none         &none         &none         &none                         &rgb_ug_brt_inc &rgb_ug_brt_dec &trans        &trans        &none
 &trans        &trans        &trans        &trans        &trans        &trans  &trans  &trans                                                  &trans
             >;
         };
