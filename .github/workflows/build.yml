@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: West Init & Update
-        uses: zmkfirmware/zmk-build-action@v1
+        uses: zmkfirmware/zmk-build-action@v3 # <--- CORRECTED FROM v1 to v3
         with:
           west-init-args: "-l config"
 
@@ -30,7 +30,7 @@ jobs:
           echo "Search complete."
 
       - name: Build
-        uses: zmkfirmware/zmk-build-action@v1
+        uses: zmkfirmware/zmk-build-action@v3 # <--- CORRECTED FROM v1 to v3
         with:
           build-args: "-s zmk/app -d build/${{ matrix.shield }} -b nice_nano_v2 -- -DSHIELD=${{ matrix.shield }}"
 
