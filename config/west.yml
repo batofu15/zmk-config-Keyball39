@@ -2,13 +2,13 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: petejohanson  # <--- ADDED this new remote
-      url-base: https://github.com/petejohanson
+#    - name: petejohanson  # <--- ADDED this new remote
+#      url-base: https://github.com/petejohanson
     - name: kumamuk-git
       url-base: https://github.com/kumamuk-git
   projects:
     - name: zmk
-      remote: petejohanson #zmkfirmware
+      remote: zmkfirmware #petejohanson
       revision: main
       import: app/west.yml
     - name: zmk-pmw3610-driver
