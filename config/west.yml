@@ -6,7 +6,7 @@ manifest:
 #      url-base: https://github.com/petejohanson
 #    - name: kumamuk-git
 #     url-base: https://github.com/kumamuk-git
--    - name: sayu-hub
+     - name: sayu-hub
       url-base: https://github.com/sayu-hub
   projects:
     - name: zmk
