@@ -241,9 +241,9 @@ layers:
   - {t: '$$mdi:transfer$$', type: trans}
   - {t: '$$mdi:transfer$$', type: trans}
   SNIPE:
-  - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
-  - {t: '$$mdi:transfer$$', type: trans}
+  - EP TOG
+  - RGB TOG
+  - RGB BRI
   - {t: '$$mdi:transfer$$', type: trans}
   - $$mdi:progress-download$$
   - $$mdi:progress-download$$
