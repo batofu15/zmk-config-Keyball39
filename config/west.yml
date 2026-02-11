@@ -2,8 +2,6 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: sayu-hub
-      url-base: https://github.com/sayu-hub
 #    - name: petejohanson  # <--- ADDED this new remote
 #      url-base: https://github.com/petejohanson
     # - name: kumamuk-git
